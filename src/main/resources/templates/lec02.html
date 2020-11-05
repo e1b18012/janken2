@@ -21,11 +21,19 @@
   </div>
   <div th:if="${entry}">
     エントリー
-    <ul>
-      <!--entryオブジェクトのentryNoというフィールドを指定している-->
+    <!--<ul>
+      entryオブジェクトのentryNoというフィールドを指定している
       <li>今[[${entry.entryNo}]]人がエントリーしています。</li>
       <li th:each="user : ${entry.users}">[[${user}]]</li>
-    </ul>
+    </ul>-->
+  </div>
+  <div th:if="${name}">
+    <div th:each="users,stat:${name}">
+      <ul>
+        <li>[[${users.name}]]</li>
+      </ul>
+    </div>
+
   </div>
   </p>
 </body>
