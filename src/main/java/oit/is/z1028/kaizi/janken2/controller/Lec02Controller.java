@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import oit.is.z1028.kaizi.janken2.controller.model.Entry;
 import oit.is.z1028.kaizi.janken2.controller.model.User;
 import oit.is.z1028.kaizi.janken2.controller.model.UserMapper;
+import oit.is.z1028.kaizi.janken2.controller.model.Match;
+import oit.is.z1028.kaizi.janken2.controller.model.MatchMapper;
 
 @Controller
 public class Lec02Controller {
@@ -22,6 +24,8 @@ public class Lec02Controller {
   private Entry entry;
   @Autowired
   UserMapper usersMapper;
+  @Autowired
+  MatchMapper matchesMapper;
 
   /**
    * lec02というGETリクエストがあったら，lec02()を呼び出して，lec02.htmlを返すメソッド
@@ -32,10 +36,12 @@ public class Lec02Controller {
   public String lec02(Principal prin,ModelMap model) {
     String loginUser = prin.getName(); //ログインユーザー名
     ArrayList<User> names = usersMapper.selectAllByName();
+    ArrayList<Match> users = matchesMapper.selectAllByUsers();
     this.entry.addUser(loginUser);
     model.addAttribute("login_user",loginUser);
     model.addAttribute("entry",this.entry);
     model.addAttribute("name", names);
+    model.addAttribute("users", users);
     return "lec02.html";
   }
   @GetMapping("/hand={param}")

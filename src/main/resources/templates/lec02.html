@@ -33,7 +33,14 @@
         <li>[[${users.name}]]</li>
       </ul>
     </div>
-
+  </div>
+  試合結果
+  <div th:if="${users}">
+    <div th:each="matches,stat:${users}">
+      <ul>
+        <li>id:[[${matches.id}]] user_1:[[${matches.user_1}]] user_2:[[${matches.user_2}]] user_1の手:[[${matches.user_1_hand}]] user_2の手:[[${matches.user_2_hand}]]</li>
+      </ul>
+    </div>
   </div>
   </p>
 </body>
