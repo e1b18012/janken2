@@ -10,6 +10,14 @@
   <h1>Lec02 GET!</h1>
   <p>
   <h1 th:if="${name}">Hi [[${name}]]<br></h1>
+  <a href="/hand=Gu">ぐー</a>
+  <a href="/hand=Tyoki">ちょき</a>
+  <a href="/hand=Pa">ぱー</a><br>
+  <div th:if="${hand}">
+    あなたの手 [[${hand}]]<br>
+    相手の手 [[${aite}]]<br>
+    結果 [[${result}]]<br>
+  </div>
   </p>
 </body>
 
