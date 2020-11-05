@@ -20,5 +20,23 @@ public class Lec02Controller {
     model.addAttribute("name",name);
     return "lec02.html";
   }
-
+  @GetMapping("/hand={param}")
+  public String lec02_1(@PathVariable String param,ModelMap model){
+    String hand = param;
+    String aite = "Gu";
+    String result = null;
+    model.addAttribute("hand",hand);
+    model.addAttribute("aite",aite);
+    if(hand.equals("Pa")){
+      result="You Win!";
+      model.addAttribute("result",result);
+    }else if(hand.equals("Tyoki")){
+      result="You Lose...";
+      model.addAttribute("result",result);
+    }else{
+      result="Even";
+      model.addAttribute("result",result);
+    }
+    return "lec02.html";
+  }
 }
