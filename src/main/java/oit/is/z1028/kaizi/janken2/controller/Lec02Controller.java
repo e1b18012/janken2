@@ -1,6 +1,7 @@
 package oit.is.z1028.kaizi.janken2.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.z1028.kaizi.janken2.controller.model.Entry;
+import oit.is.z1028.kaizi.janken2.controller.model.User;
+import oit.is.z1028.kaizi.janken2.controller.model.UserMapper;
 
 @Controller
 public class Lec02Controller {
 
   @Autowired
   private Entry entry;
+  @Autowired
+  UserMapper usersMapper;
 
   /**
    * lec02というGETリクエストがあったら，lec02()を呼び出して，lec02.htmlを返すメソッド
@@ -26,9 +31,11 @@ public class Lec02Controller {
   @GetMapping("/lec02")
   public String lec02(Principal prin,ModelMap model) {
     String loginUser = prin.getName(); //ログインユーザー名
+    ArrayList<User> names = usersMapper.selectAllByName();
     this.entry.addUser(loginUser);
     model.addAttribute("login_user",loginUser);
     model.addAttribute("entry",this.entry);
+    model.addAttribute("name", names);
     return "lec02.html";
   }
   @GetMapping("/hand={param}")
@@ -50,4 +57,5 @@ public class Lec02Controller {
     }
     return "lec02.html";
   }
+
 }
