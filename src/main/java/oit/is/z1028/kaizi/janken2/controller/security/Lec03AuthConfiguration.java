@@ -29,6 +29,8 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
         .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("USER");
     auth.inMemoryAuthentication().withUser("admin")
         .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("ADMIN");
+      auth.inMemoryAuthentication().withUser("おおた")
+        .password("$2y$10$rJ9yqGht2W96MdIJICRQQOuUiYrt2eDokKnDuZZof2DPs83PN6QdC").roles("USER");
 
     // 開発中は↓の書き方でも良いが，平文でパスワードが保存される
     // auth.inMemoryAuthentication().withUser("user1").password(passwordEncoder().encode("pAssw0rd")).roles("USER");
