@@ -9,7 +9,8 @@
 <body>
   <h1>Lec02 GET!</h1>
   <p>
-  <h1 th:if="${name}">Hi [[${name}]]<br></h1>
+  <h1 th:if="${login_user}">Hi [[${login_user}]]<br></h1>
+  <a href="/logout" onclick=" return confirm('Are you sure you want to log off?')">ログアウト</a><br>
   <a href="/hand=Gu">ぐー</a>
   <a href="/hand=Tyoki">ちょき</a>
   <a href="/hand=Pa">ぱー</a><br>
@@ -17,6 +18,14 @@
     あなたの手 [[${hand}]]<br>
     相手の手 [[${aite}]]<br>
     結果 [[${result}]]<br>
+  </div>
+  <div th:if="${entry}">
+    エントリー
+    <ul>
+      <!--entryオブジェクトのentryNoというフィールドを指定している-->
+      <li>今[[${entry.entryNo}]]人がエントリーしています。</li>
+      <li th:each="user : ${entry.users}">[[${user}]]</li>
+    </ul>
   </div>
   </p>
 </body>
