@@ -11,14 +11,14 @@
   <p>
   <h1 th:if="${login_user}">Hi [[${login_user}]]<br></h1>
   <a href="/logout" onclick=" return confirm('Are you sure you want to log off?')">ログアウト</a><br>
-  <a href="/hand=Gu">ぐー</a>
+  <!--<a href="/hand=Gu">ぐー</a>
   <a href="/hand=Tyoki">ちょき</a>
   <a href="/hand=Pa">ぱー</a><br>
   <div th:if="${hand}">
     あなたの手 [[${hand}]]<br>
     相手の手 [[${aite}]]<br>
     結果 [[${result}]]<br>
-  </div>
+  </div>-->
   <div th:if="${entry}">
     エントリー
     <!--<ul>
@@ -30,7 +30,9 @@
   <div th:if="${name}">
     <div th:each="users,stat:${name}">
       <ul>
-        <li>[[${users.name}]]</li>
+        <li th:each="user : ${users}"><a th:href="@{/match(id=${user.id})}">
+            [[${user.name}]]</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -38,7 +40,8 @@
   <div th:if="${users}">
     <div th:each="matches,stat:${users}">
       <ul>
-        <li>id:[[${matches.id}]] user_1:[[${matches.user_1}]] user_2:[[${matches.user_2}]] user_1の手:[[${matches.user_1_hand}]] user_2の手:[[${matches.user_2_hand}]]</li>
+        <li>id:[[${matches.id}]] user_1:[[${matches.user_1}]] user_2:[[${matches.user_2}]]
+          user_1の手:[[${matches.user_1_hand}]] user_2の手:[[${matches.user_2_hand}]]</li>
       </ul>
     </div>
   </div>
