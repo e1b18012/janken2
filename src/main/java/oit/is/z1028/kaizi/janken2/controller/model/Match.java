@@ -1,28 +1,28 @@
 package oit.is.z1028.kaizi.janken2.controller.model;
 
 public class Match {
-  int id;
-  String user_1;
-  String user_2;
+  Integer id;
+  Integer user_1;
+  Integer user_2;
   String user_1_hand;
   String user_2_hand;
 
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
   // vscodeのソースコード右クリック->ソースアクションでsetter/getterを簡単に追加できる
-  public String getUser_1() {
+  public Integer getUser_1() {
     return user_1;
   }
 
-  public void setUser_1(String user_1) {
+  public void setUser_1(Integer user_1) {
     this.user_1 = user_1;
   }
 
-    public String getUser_2() {
+    public Integer getUser_2() {
     return user_2;
   }
 
-  public void setUser_2(String user_2) {
+  public void setUser_2(Integer user_2) {
     this.user_2 = user_2;
   }
 

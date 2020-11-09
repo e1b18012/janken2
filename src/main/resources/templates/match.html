@@ -7,12 +7,10 @@
 </head>
 
 <body>
-  <div th:if="${name}">
-    <div th:each="users,stat:${name}">
-      <ul>
-        <li>[[${users.name}]]</li>
-      </ul>
-    </div>
+  <h1>match</h1>
+  <div th:each="users,stat:${name}">
+    [[${users.name}]]
+    <div th:unless="${stat.last}">V.S.</div>
   </div>
   <p th:if="${id}">
     <a href="/hand=Gu">ぐー</a>
@@ -23,6 +21,7 @@
     相手の手 [[${aite}]]<br>
     結果 [[${result}]]<br>
   </div>
+  <a href="/lec02">もどる</a>
   </p>
 </body>
 
