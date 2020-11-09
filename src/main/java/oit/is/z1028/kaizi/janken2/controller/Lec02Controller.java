@@ -46,10 +46,13 @@ public class Lec02Controller {
     return "lec02.html";
   }
   @GetMapping("/hand={param}")
-  public String lec02_1(@PathVariable String param,ModelMap model){
+  @Transactional
+  public String lec02_1(@PathVariable String param,ModelMap model,Principal prin){
     String hand = param;
     String aite = "Gu";
     String result = null;
+    String loginUser = prin.getName();
+    Match mm = new Match();
     model.addAttribute("hand",hand);
     model.addAttribute("aite",aite);
     if(hand.equals("Pa")){
@@ -62,7 +65,17 @@ public class Lec02Controller {
       result="Even";
       model.addAttribute("result",result);
     }
-    return "lec02.html";
+    mm.setUser_1(2);
+    mm.setUser_2(1);
+    mm.setUser_1_hand(aite);
+    mm.setUser_2_hand(hand);
+    try {
+      matchesMapper.insertMatches(mm);
+    } catch (RuntimeException e) {// 既に身長が登録されているユーザでさらに登録しようとすると実行時例外が発生するので，コンソールに出力してinsertをSkipする
+      System.out.println("Exception:" + e.getMessage());
+    }
+
+    return "match.html";
   }
   @GetMapping("/match")
   @Transactional

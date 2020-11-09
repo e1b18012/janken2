@@ -37,7 +37,7 @@ public interface UserMapper {
   @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
   void insertUsers(User users);
 
-  @Insert("INSERT INTO matches (user_1,user_2,user_1_hand,user_2_hand) VALUES (#{user_1},#{user_2},#{user_1_hand},#{user_2_hand});")
-  void insertMatches(User matches);
+  //@Insert("INSERT INTO matches (user_1,user_2,user_1_hand,user_2_hand) VALUES (#{user_1},#{user_2},#{user_1_hand},#{user_2_hand});")
+  //void insertMatches(User matches);
 
 }
